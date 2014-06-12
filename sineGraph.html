@@ -1,0 +1,177 @@
+<html>
+<head>
+	<title>thermalMouse</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.inputBox {
+		float: left;
+		z-index: 200;
+		position: absolute;
+		margin: 2%;
+		padding: 2%;
+		border-radius: 10px;
+		background-color: rgba(255,255,255,0.4);
+		text-align: center;
+		font-size: 20px;
+	}
+
+	.inputer {
+		width: 200px;
+		border: 1px solid black;
+		padding: 3%;
+		border-radius: 5px;
+		margin: 1%;
+		outline: none;
+	}
+
+	#enterButton, #plus, #minus, #reset {
+		width: 100px;
+		height: 30px;
+		background-color: rgba(0,0,255,0.3);
+		border: 1px solid green;
+		border-radius: 5px;
+		margin: 2%;
+		outline: none;
+		color: white;	
+	}
+
+	#enterButton:hover,
+	#plus:hover,
+	#minus:hover,
+	#reset:hover
+	 {
+		background-color: rgba(0,0,255,0.6);
+	}
+	#enterButton:active,
+	#plus:active,
+	#minutes:active,
+	#reset:active {
+		background-color: rgba(0,0,255,0.4);
+	}
+</style>
+
+<script type="text/javascript">
+
+window.onload=function(){
+
+	var canvas = document.getElementById("c"),
+		ctx = canvas.getContext("2d"),
+		W = window.innerWidth,
+		H = window.innerHeight;
+
+	var spacing = 10;
+	var amountBlocks = W / spacing;
+	var blockWidth = 3;
+	var blockHeight = 3;
+
+
+	canvas.width = W;
+	canvas.height = H;
+
+	ctx.fillStyle = "black";
+	ctx.fillRect(0,0,W,H);
+
+
+	ctx.fillStyle = "blue";
+	ctx.fillRect(0, H/2, W, 1);
+
+
+	ctx.fillStyle = "yellow";
+
+
+	var counter = 0;
+	var sentinal = 40;
+	var changeChooser = true;
+
+
+	/* VARIABLES FOR THE CURVE */
+	var amplitude = 0;
+	var horizontal = 0;
+	var vertical = 0;
+	var point_manil = 0;
+
+	var changeOrNot = true;
+
+	var curveSetter;
+
+
+	var button = document.getElementById("enterButton");
+
+	button.onclick = function(){
+		
+		amplitude = document.getElementById("amplitude").value;
+
+		createCurve(amplitude);
+			
+	}
+
+
+	var cool = vertical;
+
+	createCurve(0);
+
+
+	function createCurve(ampl){
+
+		ctx.fillStyle = "black";
+		ctx.fillRect(0,0,W,H);
+
+
+		ctx.fillStyle = "blue";
+		ctx.fillRect(0, H/2, W, 1);
+
+		ctx.fillStyle = "yellow";
+		
+
+
+		for(var i = 0; i < amountBlocks; i++){
+			ctx.fillRect(i * spacing, H/2 + ampl * Math.sin(i), blockWidth, blockHeight);
+		}
+
+
+
+		counter++;
+
+		if(counter % sentinal == 0 && changeChooser == false){
+			changeChooser = true;
+		} else if (counter % sentinal == 0 && changeChooser == true){
+			changeChooser = false;
+		}
+
+		if(changeChooser){
+			amplitude+=1;
+		} else {
+			amplitude-=1;
+		}
+
+	}
+
+
+
+};
+
+
+
+
+</script>
+
+<body>
+
+	<div class="inputBox">
+		<input class="inputer" id="amplitude" placeHolder="Amplitude (e.g 10, 12)"></input>
+	</br>	
+		
+		<button id="enterButton">Enter</button>	
+	<br>
+</div>
+
+	<canvas id = "c"> Go get chrome or another browser that supports canvas.... </canvas>
+</body>
+</html>
