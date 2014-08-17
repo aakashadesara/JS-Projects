@@ -1,4 +1,6 @@
-
+//Sets initial color, thickness, and loads canvas. The entire program is run in canvas. 
+//Using space to put down pen and click on the colors to change colors.
+//Made by Aakash Adesara
 	var color = "black";
 	var thickness = 10;	
 	window.onload = function() {
