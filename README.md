@@ -5,4 +5,3 @@ Other projects will be added.
 Current:
 SineGraph Generator
 JSPaintboard
-More soon to come.
