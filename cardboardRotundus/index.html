@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Rotundus - Google Cardboard</title>
+</head>
+
+
+<body>
+
+	<style type="text/css">
+		body{
+			margin: 0px;
+			background-color: black;
+		}
+
+		iframe {
+			float: left;
+			margin: 0px;
+			padding: 0px;
+			border: 0px;
+			position: relative;
+			height: 500px;
+			width: 50%;
+		}
+
+		#iFrameHolder {
+			max-width: 80%;
+			max-height: 80%;
+			margin: 5% auto;
+		}
+	</style>
+
+	<div id="iFrameHolder">
+		<iframe class="1er" margin="0px" padding="0px" float="left" src="http://www.aakashadesara.com/rotundus"></iframe>
+
+		<iframe class="2er" margin="0px" padding="0px" float="left" src="http://www.aakashadesara.com/rotundus"></iframe>
+	</div>
+	<script type="text/javascript">
+		fullscreen();
+
+		function fullscreen() {
+	      if (container.requestFullscreen) {
+	        container.requestFullscreen();
+	      } else if (container.msRequestFullscreen) {
+	        container.msRequestFullscreen();
+	      } else if (container.mozRequestFullScreen) {
+	        container.mozRequestFullScreen();
+	      } else if (container.webkitRequestFullscreen) {
+	        container.webkitRequestFullscreen();
+	      }
+	    }
+	</script>
+</body>
+</html>
